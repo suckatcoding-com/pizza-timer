@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Timer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#e63946">
+</head>
+<body>
+
+    <div class="app-container">
+        <header>
+            <h1 data-i18n="title">🍕 Pizza Timer</h1>
+            <p data-i18n="subtitle" style="font-size: 0.9rem; opacity: 0.9;">Your flexible dough schedule</p>
+        </header>
+
+        <div class="content">               
+            <section>
+                <h2 class="section-title" data-i18n="schedule_title">1. Schedule</h2>
+
+                <div class="input-group">
+                    <label for="bake-time" data-i18n="label_baketime">Approx. meal time (Start):</label>
+                    <input type="datetime-local" id="bake-time">
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-type" data-i18n="label_method">Dough Method</label>
+                    <select id="recipe-type">
+                        <option value="24" data-i18n="method_24">Standard (24h - Neapolitan)</option>
+                        <option value="8" data-i18n="method_8">Quick (8h - Room Temp)</option>
+                        <option value="48" data-i18n="method_48">Pro (48h - Cold Fermentation)</option>
+                    </select>
+                </div>
+
+                <div class="timeline" id="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="time-label" id="time-1">--:--</div>
+                            <button class="cal-btn" id="cal-1" data-i18n-title="cal_title" title="Add to calendar">📅</button>
+                        </div>
+                        <div class="task-title" data-i18n="task1_title">Knead dough</div>
+                        <div class="task-desc" data-i18n="task1_desc">Mix and knead ingredients. Then cover and let rest at room temperature (bulk fermentation).</div>
+                    </div>
+
+                    <div class="timeline-item" id="step-fridge">
+                        <div class="timeline-header">
+                            <div class="time-label" id="time-2">--:--</div>
+                            <button class="cal-btn" id="cal-2" data-i18n-title="cal_title" title="Add to calendar">📅</button>
+                        </div>
+                        <div class="task-title" data-i18n="task2_title">Into the fridge</div>
+                        <div class="task-desc" data-i18n="task2_desc">Seal dough airtight and place in the fridge for cold fermentation.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="time-label" id="time-3">--:--</div>
+                            <button class="cal-btn" id="cal-3" data-i18n-title="cal_title" title="Add to calendar">📅</button>
+                        </div>
+                        <div class="task-title" data-i18n="task3_title">Shape dough balls</div>
+                        <div class="task-desc" data-i18n="task3_desc">Portion dough, shape into balls, cover and let rise at room temperature (proof).</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div class="time-label" id="time-4">--:--</div>
+                            <button class="cal-btn" id="cal-4" data-i18n-title="cal_title" title="Add to calendar">📅</button>
+                        </div>
+                        <div class="task-title" data-i18n="task4_title">Turn on oven & Bake</div>
+                        <div class="task-desc" data-i18n="task4_desc">Time to preheat the oven and bake the pizzas! Enjoy your meal.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title" data-i18n="calc_title">2. Ingredients Calculator</h2>
+                
+                <div class="input-grid">
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label for="num-pizzas" data-i18n="label_pizzas">Pizzas (pcs)</label>
+                        <input type="number" id="num-pizzas" value="4" min="1" max="50">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label for="weight-pizza" data-i18n="label_weight">Weight/pc (g)</label>
+                        <input type="number" id="weight-pizza" value="250" min="100" max="500" step="10">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label for="hydration" data-i18n="label_hydration">Water (%)</label>
+                        <input type="number" id="hydration" value="65" min="50" max="90">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0;">
+                        <label for="salt" data-i18n="label_salt">Salt (%)</label>
+                        <input type="number" id="salt" value="3" min="1" max="5" step="0.1">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 0; grid-column: span 2;">
+                        <label for="yeast-type" data-i18n="label_yeast">Yeast Type</label>
+                    <select id="yeast-type">
+                        <option value="fresh" data-i18n="yeast_fresh">Fresh Yeast</option>
+                        <option value="dry" data-i18n="yeast_dry">Active Dry Yeast</option>
+                        <option value="instant" data-i18n="yeast_instant">Instant Yeast</option>
+                    </select>
+                </div>
+            </section>
+            <div class="recipe-box" id="recipe-result"></div>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
