@@ -10,6 +10,7 @@ const weightPizzaInput = document.getElementById('weight-pizza');
 const hydrationInput = document.getElementById('hydration');
 const saltInput = document.getElementById('salt');
 const yeastTypeInput = document.getElementById('yeast-type');
+const pizzaSizeInput = document.getElementById('pizza-size');
 const recipeResult = document.getElementById('recipe-result');
 const bakeTimeInput = document.getElementById('bake-time');
 const recipeTypeInput = document.getElementById('recipe-type');
@@ -185,8 +186,23 @@ recipeTypeInput.addEventListener('change', () => {
     updateIngredients();
 });
 
+function syncSizeSelector() {
+    pizzaSizeInput.value = pizzaSizeInput.options.length &&
+        [...pizzaSizeInput.options].some(o => o.value === weightPizzaInput.value)
+        ? weightPizzaInput.value : '';
+}
+
 numPizzasInput.addEventListener('input', updateIngredients);
-weightPizzaInput.addEventListener('input', updateIngredients);
+weightPizzaInput.addEventListener('input', () => {
+    updateIngredients();
+    syncSizeSelector();
+});
+pizzaSizeInput.addEventListener('change', () => {
+    if (pizzaSizeInput.value) {
+        weightPizzaInput.value = pizzaSizeInput.value;
+        updateIngredients();
+    }
+});
 hydrationInput.addEventListener('input', updateIngredients);
 saltInput.addEventListener('input', updateIngredients);
 yeastTypeInput.addEventListener('change', updateIngredients);
@@ -195,3 +211,4 @@ yeastTypeInput.addEventListener('change', updateIngredients);
 applyTranslations();
 updateTimeline();
 updateIngredients();
+syncSizeSelector();

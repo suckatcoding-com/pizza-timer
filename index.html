@@ -78,6 +78,19 @@
                 <h2 class="section-title" data-i18n="calc_title">2. Ingredients Calculator</h2>
                 
                 <div class="input-grid">
+                    <div class="input-group" style="margin-bottom: 0; grid-column: span 2;">
+                        <label for="pizza-size" data-i18n="label_size">Pizza size</label>
+                        <select id="pizza-size">
+                            <option value="" data-i18n="size_custom">Custom</option>
+                            <option value="100" data-i18n="size_100">Small 20 cm – 100 g</option>
+                            <option value="150" data-i18n="size_150">Mini 25 cm – 150 g</option>
+                            <option value="200" data-i18n="size_200">Medium 28 cm – 200 g</option>
+                            <option value="250" data-i18n="size_250">Large 30 cm – 250 g</option>
+                            <option value="300" data-i18n="size_300">XL 33 cm – 300 g</option>
+                            <option value="350" data-i18n="size_350">XXL 35 cm – 350 g</option>
+                            <option value="400" data-i18n="size_400">Party 40 cm – 400 g</option>
+                        </select>
+                    </div>
                     <div class="input-group" style="margin-bottom: 0;">
                         <label for="num-pizzas" data-i18n="label_pizzas">Pizzas (pcs)</label>
                         <input type="number" id="num-pizzas" value="4" min="1" max="50">
